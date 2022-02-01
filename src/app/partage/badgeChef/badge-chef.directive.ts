@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges} from '@angular/core';
+/*import {Directive, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges} from '@angular/core';
 import {Person} from "../../model/Person";
 
 @Directive({
@@ -32,3 +32,4 @@ export class BadgeChefDirective implements OnInit, OnChanges{
     this.ngOnInit();
   }
 }
+*/

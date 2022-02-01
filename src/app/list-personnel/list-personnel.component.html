@@ -1,16 +1,24 @@
 <section [ngSwitch]="view">
   <section *ngSwitchCase="'card'">
-    <carte [employe]="employe" (personDelete)="delete($event)" (personUpdate)="update($event)" *ngFor="let employe of personnel" ></carte>
+    <carte [musique]="musique" (personDelete)="delete($event)" (personUpdate)="update($event)" *ngFor="let musique of musiques" ></carte>
   </section>
 
   <section *ngSwitchCase="'list'">
     <mat-list>
-      <mat-list-item *ngFor="let employe of personnel" class="mat-whiteframe-2dp mat-card">
-        <img mat-list-avatar src="{{ employe.photo }}" alt="Avatar de l'employé"/>
-        <h3 mat-line> <span badgeChef [employe]="employe!"></span> {{ employe.prenom }} {{ employe.nom }} </h3>
+      <mat-list-item *ngFor="let musique of musiques" class="mat-whiteframe-2dp mat-card">
+        <img mat-list-avatar src="{{ musique.picture }}" alt="Pochette de la musique"/>
+        <h3 mat-line> {{ musique.title }} </h3>
         <p mat-line>
-          <span> {{ employe.email }} </span> — <span>{{ employe.telephone }} </span>
+          <span> {{ musique.description }}</span> - <span>{{ musique.duration }} </span>
         </p>
+        <p mat-line>
+          <span> {{ musique.album }} </span> — <span>{{ musique.artist }} </span> — <span>{{ musique.date }} </span>
+        </p>
+        <mat-list-item *ngFor="let style of musique.styles" class="mat-whiteframe-2dp mat-card">
+          <p mat-line>
+            <span>style</span>
+          </p>
+        </mat-list-item>
       </mat-list-item>
     </mat-list>
   </section>

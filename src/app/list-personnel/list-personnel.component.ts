@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ListPersonnelService} from "../partage/service/list-personnel.service";
-import {Person} from "../model/Person";
+import {Musique} from "../model/Musique";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {mergeMap} from "rxjs";
 import {AjoutPopupComponent} from "./ajout-popup/ajout-popup.component";
@@ -12,7 +12,7 @@ import {AjoutPopupComponent} from "./ajout-popup/ajout-popup.component";
 })
 export class ListPersonnelComponent implements OnInit {
 
-  personnel: Person[] = [];
+  musiques: Musique[] = [];
   view:string = "card";
   dialogStatus: string = "inactive";
   private addDialog: MatDialogRef<AjoutPopupComponent> | any;
@@ -22,14 +22,14 @@ export class ListPersonnelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listPersonnelService.fetch().subscribe(personnel => {
-      this.personnel = personnel || [];
+    this.listPersonnelService.fetch().subscribe(musiques => {
+      this.musiques = musiques || [];
     });
   }
 
-  delete(person: Person) {
-    this.listPersonnelService.delete(person.id!).subscribe(personnel => {
-      this.personnel = personnel;
+    delete(musiques: Musique) {
+    this.listPersonnelService.delete(musiques.id!).subscribe(msq => {
+      this.musiques = msq;
     });
   }
 
@@ -42,22 +42,22 @@ export class ListPersonnelComponent implements OnInit {
     }
   }
 
-  add(person: Person) {
+  add(musique: Musique) {
     this.listPersonnelService
-      .create(person)
+      .create(musique)
       .pipe(mergeMap(() => this.listPersonnelService.fetch()))
-      .subscribe(personnel => {
-        this.personnel = personnel;
+      .subscribe(msq => {
+        this.musiques = msq;
         this.hideDialog();
       });
   }
 
-  update(person: Person) {
+  update(musique: Musique) {
     this.listPersonnelService
-      .update(person)
+      .update(musique)
       .pipe(mergeMap(() => this.listPersonnelService.fetch()))
-      .subscribe(personnel => {
-        this.personnel = personnel;
+      .subscribe(msq => {
+        this.musiques = msq;
         this.hideDialog();
       });
   }
@@ -70,10 +70,10 @@ export class ListPersonnelComponent implements OnInit {
       data: {}
     });
 
-    this.addDialog.afterClosed().subscribe((person:any)=> {
+    this.addDialog.afterClosed().subscribe((musique:any)=> {
       this.dialogStatus = 'inactive';
-      if (person) {
-        this.add(person);
+      if (musique) {
+        this.add(musique);
       }
     });
   }
