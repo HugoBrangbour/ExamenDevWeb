@@ -6,7 +6,7 @@
   <section *ngSwitchCase="'list'">
     <mat-list>
       <mat-list-item *ngFor="let musique of musiques" class="mat-whiteframe-2dp mat-card">
-        <img mat-list-avatar src="{{ musique.picture }}" alt="Pochette de la musique"/>
+        <img mat-list-avatar src="{{ musique.picture || defaultImage}}" alt="Pochette de la musique"/>
         <h3 mat-line> {{ musique.title }} </h3>
         <p mat-line>
           <span> {{ musique.description }}</span> - <span>{{ musique.duration }} </span>
