@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Musique} from "../../model/Musique";
 
@@ -16,7 +17,6 @@ export class CarteComponent {
 
 
   constructor() {
-    //Empty
   }
 
   delete() {

@@ -7,7 +7,7 @@ export const environment = {
     endpoints: {
       toutesLesMusiques: '/musics',
       randomMusique: '/musics/random',
-      uneMusique: 'music/:id',
+      uneMusique: '/musics/:id',
       createMusique: '/musics',
       rechercheTitre:'/musics/title/:title',
       modifMusique:'/musics/:id',

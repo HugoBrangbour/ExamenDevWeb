@@ -16,12 +16,11 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-icon>description</mat-icon>
-    <p>{{musique?.description}}</p>
-    <mat-icon>timer</mat-icon>
-    <p>{{musique?.duration}}</p>
-    <mat-icon>date_range</mat-icon>
-    <p>{{musique?.date}}</p>
+    <div *ngIf="this.musique?.description == '' || this.musique?.description == undefined"><mat-icon>description</mat-icon>C'est une très belle description que voici !</div>
+    <div *ngIf="this.musique?.description != ''"><mat-icon>description</mat-icon>{{musique?.description}}</div>
+    <br>
+    <mat-icon>timer</mat-icon>{{musique?.duration}}<br>
+    <mat-icon>date_range</mat-icon>{{musique?.date | date}}<br><br><br>
     <mat-card-subtitle class="info">
       <mat-icon>person</mat-icon>
       <p>{{musique?.artist}}</p>

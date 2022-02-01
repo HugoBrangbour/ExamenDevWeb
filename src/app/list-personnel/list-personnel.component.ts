@@ -16,7 +16,7 @@ export class ListPersonnelComponent implements OnInit {
   view:string = "card";
   dialogStatus: string = "inactive";
   private addDialog: MatDialogRef<AjoutPopupComponent> | any;
-
+  defaultImage: string = "./assets/randomAvatar.png";
   constructor( private readonly listPersonnelService: ListPersonnelService, public dialog: MatDialog) {
     //Rien à faire ici
   }
