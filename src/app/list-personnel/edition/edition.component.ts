@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ListPersonnelService} from "../../partage/service/list-personnel.service";
-import {Person} from "../../model/Person";
+import {Musique} from "../../model/Musique";
 
 @Component({
   selector: 'app-edition',
@@ -10,7 +10,7 @@ import {Person} from "../../model/Person";
 })
 export class EditionComponent implements OnInit {
 
-  employe: Person;
+  musique: Musique;
 
   /**
    * Component constructor
@@ -20,18 +20,18 @@ export class EditionComponent implements OnInit {
     private readonly router: Router,
     private readonly listPersonnelService: ListPersonnelService
   ) {
-    this.employe = {};
+    this.musique = {};
   }
 
   /**
    * OnInit implementation
    */
   ngOnInit() {
-    this.route.data.subscribe(( employe: any) => (this.employe = employe.employe));
+    this.route.data.subscribe(( musique: any) => (this.musique = musique.musique));
   }
 
-  submit(employe: any) {
-    this.listPersonnelService.update(employe).subscribe(() => {
+  submit(musique: any) {
+    this.listPersonnelService.update(musique).subscribe(() => {
       this.router.navigate(['/listPersonnel']).then(r => null);
     });
   }

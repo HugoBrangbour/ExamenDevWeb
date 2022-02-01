@@ -2,7 +2,7 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} f
 import {MatChipInputEvent} from "@angular/material/chips";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Person} from "../../model/Person";
+import {Musique} from "../../model/Musique";
 
 @Component({
   selector: 'formulaire',
@@ -11,7 +11,7 @@ import {Person} from "../../model/Person";
 })
 export class FormulaireComponent implements OnInit {
   form: FormGroup;
-  @Input() employeModel: Person;
+  @Input() musiqueModel: Musique;
   @ViewChild("fileInput") fileInput!: ElementRef;
 
   @Output('cancel') cancelEvent$: EventEmitter<any>;
@@ -23,13 +23,13 @@ export class FormulaireComponent implements OnInit {
     this.submitEvent$ = new EventEmitter();
     this.cancelEvent$ = new EventEmitter();
     this.form = FormulaireComponent.buildForm();
-    this.employeModel = {
-      titres: []
+    this.musiqueModel = {
+      styles: []
     };
   }
 
   ngOnInit() {
-    debugger;
+    debugger;/*
     this.form.patchValue({
       id: this.employeModel.id,
       nom: this.employeModel.nom,
@@ -39,15 +39,15 @@ export class FormulaireComponent implements OnInit {
       sexe: this.employeModel.sexe,
       photo: this.employeModel.photo,
       telephone: this.employeModel.telephone
-    });
+    });*/
   }
-
+/*
   cancel() {
     this.cancelEvent$.emit();
   }
 
-  submit(employe: Person) { //Formulaire
-    employe.photo = this.employeModel.photo;
+  submit(employe: Musique) { //Formulaire
+    employe.photo = this.musiqueModel.photo;
     this.submitEvent$.emit(employe);
   }
 
@@ -55,14 +55,14 @@ export class FormulaireComponent implements OnInit {
   addChipset(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
     if (value) {
-      this.employeModel.titres!.push(value);
+      this.musiqueModel.titres!.push(value);
     }
     event.chipInput!.clear();
   }
 
   removeChipset(titre: any): void {
-    const index = this.employeModel.titres!.indexOf(titre);
-    this.employeModel.titres!.splice(index, 1);
+    const index = this.musiqueModel.titres!.indexOf(titre);
+    this.musiqueModel.titres!.splice(index, 1);
   }
 
   onFileSelected(event:Event | null) {
@@ -73,11 +73,11 @@ export class FormulaireComponent implements OnInit {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = (_event) => {
-          this.employeModel.photo = reader.result;
+          this.musiqueModel.photo = reader.result;
         }
     }
   }
-
+*/
   /**
    * Fonction pour construire notre formulaire
    * @returns {FormGroup}
